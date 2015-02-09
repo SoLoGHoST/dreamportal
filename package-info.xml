@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>DreamPortalTeam:DreamPortal</id>
+	<name>Dream Portal</name>
+	<version>1.1</version>
+	<type>modification</type>
+	<!--
+		Dream Portal Project by the Dream Portal Team
+		Dream Portal founded by ccbtimewiz (ccbtimewiz@dream-portal.net)
+		Software for Simple Machines Forum (SMF) (http://simplemachines.org)
+		Copyright 2009-2013 Dream Portal (http://dream-portal.net)
+		Dream Portal License:  http://dream-portal.net/index.php?page=license
+	-->
+	<install for="2.0 - 2.0.99">
+		<readme type="file" parsebbc="true">DreamPortalInstall.bbc</readme>
+		<modification format="xml" type="file">smf2/modifications.xml</modification>
+		<require-file name="dp_license.txt" destination="$boarddir" />
+		<require-file name="smf2/dp_ajax.php" destination="$boarddir" />
+		<require-file name="smf2/Sources/dp_core.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/Subs-DreamPortal.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/DreamPortal.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/Subs-DreamModules.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/DreamModules.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/ManageDPExtend.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/ManageDPLayouts.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/ManageDPMenu.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/ManageDPPages.php" destination="$sourcedir" />
+		<require-file name="smf2/Sources/ManageDPSettings.php" destination="$sourcedir" />
+		<require-dir name="smf2/Themes/default/css" destination="$themedir" />
+		<require-dir name="smf2/Themes/default/languages" destination="$themedir" />
+		<require-dir name="smf2/Themes/default/scripts" destination="$themedir" />
+		<require-file name="smf2/Themes/default/DreamPortal.template.php" destination="$themedir" />
+		<require-file name="smf2/Themes/default/ManageDPMenu.template.php" destination="$themedir" />
+		<require-file name="smf2/Themes/default/ManageDPLayouts.template.php" destination="$themedir" />
+		<require-file name="smf2/Themes/default/ManageDPExtend.template.php" destination="$themedir" />
+		<require-file name="smf2/Themes/default/ManageDPPages.template.php" destination="$themedir" />
+		<require-file name="smf2/Themes/default/ManageDPSettings.template.php" destination="$themedir" />
+		<require-file name="smf2/Themes/default/images/admin/feature_dp.png" destination="$imagesdir/admin" />
+		<require-dir name="smf2/dreamportal" destination="$boarddir" />
+		<redirect url="?action=admin;area=corefeatures#js_feature_dp" />
+		<database>DreamPortalInstall.php</database>
+	</install>
+	<uninstall for="2.0 - 2.0.99">
+		<readme type="file" parsebbc="true">DreamPortalUninstall.bbc</readme>
+		<modification format="xml" type="file" reverse="true">smf2/modifications.xml</modification>
+		<database>DreamPortalUninstall.php</database>
+		<code>DreamPortalRequiredUninstall.php</code>
+		<remove-file name="$boarddir/dp_ajax.php" />
+		<remove-file name="$imagesdir/admin/feature_dp.png" />
+		<remove-file name="$sourcedir/dp_core.php" />
+		<remove-file name="$sourcedir/DreamPortal.php" />
+		<remove-file name="$sourcedir/DreamModules.php" />
+		<remove-file name="$sourcedir/Subs-DreamModules.php" />
+		<remove-file name="$sourcedir/Subs-DreamPortal.php" />
+		<remove-file name="$sourcedir/ManageDPMenu.php" />
+		<remove-file name="$sourcedir/ManageDPLayouts.php" />
+		<remove-file name="$sourcedir/ManageDPExtend.php" />
+		<remove-file name="$sourcedir/ManageDPPages.php" />
+		<remove-file name="$sourcedir/ManageDPSettings.php" />
+		<remove-file name="$themedir/DreamPortal.template.php" />
+		<remove-file name="$themedir/ManageDPMenu.template.php" />
+		<remove-file name="$themedir/ManageDPLayouts.template.php" />
+		<remove-file name="$themedir/ManageDPExtend.template.php" />
+		<remove-file name="$themedir/ManageDPPages.template.php" />
+		<remove-file name="$themedir/ManageDPSettings.template.php" />
+		<remove-file name="$languagedir/DreamPortal.english.php" />
+		<remove-file name="$languagedir/ManageDP.english.php" />
+		<remove-file name="$languagedir/DreamHelp.english.php" />
+		<remove-file name="$languagedir/DreamPermissions.english.php" />
+		<remove-file name="$themedir/css/dreamportal.css" />
+		<remove-file name="$themedir/scripts/dpAdmin.js" />
+		<remove-file name="$themedir/scripts/dreamportal.js" />
+		<remove-file name="$themedir/scripts/dpManMods.js" />
+		<remove-file name="$themedir/scripts/jscolor.js" />
+		<remove-file name="$boarddir/dp_license.txt" />
+	</uninstall>
+
+</package-info>

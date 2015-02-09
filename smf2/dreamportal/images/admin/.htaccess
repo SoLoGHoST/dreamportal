@@ -1,0 +1,9 @@
+<FilesMatch "\.(jpg|jpeg|png|gif|bmp)$">
+  <IfModule mod_headers.c>
+	  Header unset Pragma
+	  FileETag None
+	  Header unset ETag
+	  Header set Cache-Control "max-age=864000, public, must-revalidate"
+	  Header unset Last-Modified
+  </IfModule>
+</FilesMatch>

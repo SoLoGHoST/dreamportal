@@ -1,0 +1,61 @@
+<?php
+// Dream Portal (c) 2009-2012 Dream Portal Team
+// DreamHelp.english.php; @1.1
+
+global $helptxt;
+
+// DP Admin Section help strings...
+$helptxt['dp_admin_layouts_help'] = '<strong>Dream Layouts</strong><br />Here you can edit the positions and settings of modules. To move modules around you can click and drag. All modules can be duplicated by clicking \'Clone\'. Each module has its own settings and clones have their own settings. There is a quick color changer on the right that you can use to change the white color on modules to something else, such as blue or black. Please note that only the modules displayed on this page change color and the modules displayed on the home page are not affected.';
+$helptxt['dp_admin_general_help'] = '<strong>General Information and Settings</strong><br />Here you can view information about Dream Portal as well as change the basic features and options of Dream Portal.';
+$helptxt['dp_admin_extend_help'] = '<strong>Extend Dream Portal</strong><br />Allows you to extend Dream Portal in any of 3 areas:  Modules, Templates, and/or Languages.';
+$helptxt['dp_admin_menu_help'] = '<strong>Dream Menu</strong><br />Allows you to add and manage Menu Buttons within the SMF Menu anywhere you want them positioned.  Supports up to 2 sub-levels of Menu buttons.';
+$helptxt['dp_admin_pages_help'] = '<strong>Dream Pages</strong><br />Allows you to, dynamically, create your own webpages that will be accessible via index.php?pages={your page name}.  You can link these pages to a Dream Menu Button within the Dream Menu as well.';
+
+$helptxt['dpmodule_header_heights_help'] = 'Sets the Default Expanded Modules Header Height (in pixels) for each theme you have installed.<br /><br />This can be useful if the default modules height of 28 pixels is either, too small to be able to see the title within the modules header, or too big.  You can adjust this value on a per-theme basis so that your modules header displays exactly the way you want it to be displayed in all themes for your site.';
+$helptxt['dp_add_modules_limit_help'] = 'Sets how many modules to list, per page, within the Add Modules sub-section of the Extend Dream Portal section.<br /><br /><u><strong>Note</strong>:</u> Setting this value to 0 will disable pagination altogether and show all modules.';
+$helptxt['dp_add_templates_limit_help'] = 'Sets how many templates to list, per page, within the Add Templates sub-section of the Extend Dream Portal section.<br /><br /><u><strong>Note</strong>:</u> Setting this value to 0 will disable pagination altogether and show all templates.';
+$helptxt['dp_add_languages_limit_help'] = 'Sets how many languages to list, per page, within the Add Languages sub-section of the Extend Dream Portal section.<br /><br /><u><strong>Note</strong>:</u> Setting this value to 0 will disable pagination altogether and show all languages.';
+$helptxt['dp_collapse_modules_help'] = 'Sets whether modules are able to be collapsed or not.  This setting acts globally on all modules regardless of each individual modules header settings.';
+$helptxt['dp_disable_homepage_help'] = 'If checked, disables the Homepage layout completely within Dream Portal.  This also removes the <strong>Forum</strong> menu button so that your forum will now link to the <strong>Home</strong> menu button instead.';
+$helptxt['dp_module_display_style_help'] = 'Sets the current display for all modules appearance within Dream Portal.';
+$helptxt['dp_module_enable_animationshelp'] = 'Enable or Disable module animations when expanding and collapsing a module.';
+$helptxt['dp_module_title_char_limit_help'] = 'Sets the quantity of characters to limit each Modules title to. <strong>...</strong> will be appended to the end of each modules title that is equal to or exceeds this limit.<br /><br /><u><strong>Note</strong>:</u> Setting this value to 0 will disable this setting and show the entire title of all modules.';
+$helptxt['dp_module_animation_speed_help'] = 'Sets how fast the modules throughout Dream Portal will expand and collapse.  Note:  Module animations must be enabled for this to take effect.  The default is set at Normal.';
+$helptxt['dp_icon_directory_help'] = 'The filepath for your icon directory is already relative to your SMF Root directory. Sets the directory from which to obtain all categories for Dream Module Icons. Categories are folders within the directory that you specify in here. After changing this folder path, you should update each of your enabled Modules with the correct icon you want for them by modifying the modules themselves. No need to input a backslash at the front or at the end of the filepath.';
+$helptxt['dp_disable_custommod_icons_help'] = 'Sets whether or not to install all icons associated with Dream Modules that you install via Modules - Add Modules section.';
+$helptxt['dp_enable_custommod_icons_help'] = 'Sets whether or not to uninstall all icons associated with Dream Modules when you Delete a Module via Modules - Add Modules section.  If unchecked, all module icons that are associated with modules, once deleted, will not be available for other modules as well.';
+$helptxt['dp_layout_name'] = 'This is the name of your layout.  Layout Names are unique on a per group basis.  If the name already exists within this group, you will need to come up with a different Layout Name.';
+$helptxt['dp_layout_actions'] = 'Sets the actions, and user-defined actions that this layout will be displayed on within SMF. Click the Add Action button to add an action to this layout by either a select box of available SMF actions or a user-defined action/non-action that you have typed in manually.  You can add as many actions as you need.<br /><br /><strong>Available SMF Actions</strong>:<br />Lists all actions within SMF that are available for this layout minus the actions you are currently using in other layouts.  When a new action becomes available it will be populated within this list. This, globally, sets all urls with this action to use this layout.<br /><br /><strong>User-defined</strong>:<br />You type in the action, or non-action that you would like this layout associated with.  You can be specific to even include sub-actions for actions and the layout will only show on those sub-actions.  You can use Non-actions as well, such as topic, board, page, etc.. Non-actions are defined within brackets, such as [topic], and [board], where [topic] points to index.php?topic, and [board] points to index.php?board.  You can define a url from this as well.  For example:  If you type in <strong>[topic]=1</strong>, this url will point to <i>index.php?topic=1</i> and this layout will be included on all pages for this topic as well.  For action urls you do not need brackets on the actual action, however all other sub-actions, areas within the action will need to be enclosed in brackets.  For example: If you type in <strong>profile[area]=statistics</strong>, than this layout will be used in the profile stats page located at <i>index.php?action=profile;area=statistics</i>.<br /><br /><strong>Important</strong>:  User-defined action urls and user-defined non-action urls take priority over the layouts for globally set actions and non-actions.<br /><br />For a list of known user-defined actions and non-actions that you can use check out this topic:  <a href="http://dream-portal.net/topic_1018.msg7371.html#msg7371" target="_blank" onfocus="if(this.blur)this.blur();">Getting Your Layout To Only Show Where You Want It</a>!';
+$helptxt['dp_layout_curr_actions'] = 'Lists the actions that are currently in use for this layout.  You can remove any action(s) by selecting them and clicking the Remove Action(s) button.';
+$helptxt['dp_layout_style'] = 'This is a list of pre-defined Layouts that you can use for Dream Portal.  Select any of these and it will be created for you.';
+$helptxt['dp_layout_curr_sections'] = 'Lists the sections that are currently in use for this layout.  You can manage each section by changing its order, colspan, enabled status, and whether SMF uses it. However, you cannot change the SMF position in the default Dream Portal layout.';
+
+// Modifying modules, standard settings help strings
+$helptxt['dream_module_template'] = 'Sets the Module Template Extension to use for this module.  You can get more Templates to use for your modules at the <a href="http://dream-portal.net" target="_blank">Dream Portal site.</a>';
+$helptxt['dream_module_header_display'] = 'Sets the display for the Modules header.';
+$helptxt['dream_module_groups'] = 'Specify groups that can view this module.';
+$helptxt['dream_module_title'] = 'Sets the title that gets displayed for this module.';
+$helptxt['dream_module_link'] = 'Sets the link for the title of this module as well as the target attribute for the link.  If empty, title of module will not have a link associated with it.  If you do not define <strong>http://</strong> or <strong>www.</strong> than links will be relative to <strong>index.php?</strong>.<br />For Example: To go to the SMF Help Menu, type in <strong>action=help</strong> or, if you want a link outside of your forum\'s site, For Example, to link to Dream Portal\'s site: <strong>http://</strong>dream-portal.net or <strong>www.</strong>dream-portal.net';
+$helptxt['dream_module_icon'] = 'Sets the icon for this module that gets shown to the left of the module title.';
+$helptxt['dream_module_minheight'] = 'Sets the Modules Minimum overall height using any of the following units: pixels <em>px</em>, percent <em>%</em>, M units <em>em</em>, Root M units (CSS 3) <em>rem</em>, X units <em>ex</em>, or points <em>pt</em>. This can help to ensure that your modules are of the same height on a layout, which can provide consistency in the presentation of your webpages on that layout.<br /><br /><u><strong>Note</strong>:</u> This setting is specific for when the <strong>Module Display Style</strong> is set to <strong>Block Style</strong> within the Layout Settings DP Admin sub-section.';
+
+// Dream Pages Help Strings Enable/Maintenance Mode.
+$helptxt['dp_pages_mode_help'] = 'Sets whether Dream Pages are enabled or disabled completely within Dream Portal.';
+$helptxt['dp_pages_maintenance_mode_help'] = 'Sets whether Dream Pages are in Maintenance Mode or not.<br /><br />When Dream Pages are in Maintenance Mode, only the Admin and members who have permission to Administrate Dream Pages will be able to access Dream Pages throughout the forum.';
+
+// Dream Menu Help Strings Enable/Maintenance Mode.
+$helptxt['dp_menu_mode_help'] = 'Sets whether the Dream Menu is enabled or disabled completely within Dream Portal.';
+$helptxt['dp_menu_maintenance_mode_help'] = 'Sets whether Dream Menu is in Maintenance Mode or not.<br /><br />When Dream Menu is in Maintenance Mode, only the Admin and members who have permission to Administrate Dream Menu will be able to view the Dream Menu.';
+$helptxt['dp_home_menu_title_help'] = 'Sets the title of the Home Menu Button that either loads up the Homepage Layout or the Board Index depending on whether the Homepage Layout is enabled or not.  If empty, the default title will be <strong>Home</strong>.';
+$helptxt['dp_forum_menu_title_help'] = 'Sets the title of the Menu Button that is responsible for loading up the SMF Board Index page when the Homepage Layout is enabled.  If blank, the Menu Button will be set to the default title of <strong>Forum</strong>.<br /><br /><u><strong>Note</strong>:</u> The default Homepage Layout must be enabled in order to change this setting.';
+
+// Disable Dream Portal Copyright in the footer.
+$helptxt['dp_disable_copyright_help'] = 'Allows disabling of the Dream Portal copyright that is displayed in the footer of every page on your forum.';
+
+/*********************************************
+	 	All Dream Portal Modules
+*********************************************/
+$helptxt['dpmod_custom_code_type'] = 'Sets the type of code you are using for this module.  There are 3 options to choose from, PHP, HTML, or BBC.  Make sure to code in that style for the type that you choose.';
+$helptxt['dpmod_custom_code'] = 'In this text area, you should type in your code that you want outputted within the module.  Make sure to code for the correct Code Type that you selected.';
+
+?>

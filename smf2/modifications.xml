@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>DreamPortalTeam:DreamPortal</id>
+	<version>1.1</version>
+
+	<!--
+	Dream Portal Project by the Dream Portal Team
+	Dream Portal founded by ccbtimewiz (ccbtimewiz@dream-portal.net)
+	Software for Simple Machines Forum (SMF) (http://simplemachines.org)
+	Copyright 2009-2012 Dream Portal (http://dream-portal.net)
+	-->
+
+	<file name="$boarddir/index.php">
+		<operation>
+			<search position="before"><![CDATA[require_once($sourcedir . '/Security.php');]]></search>
+			<add><![CDATA[
+require_once($sourcedir . '/DreamPortal.php');]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[// Is the forum in maintenance mode? (doesn't apply to administrators.)]]></search>
+			<add><![CDATA[// Load Dream Portal.
+	dp_init();
+
+	]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[	global $modSettings, $settings, $user_info, $board, $topic, $board_info, $maintenance, $sourcedir;]]></search>
+			<add><![CDATA[	global $context, $modSettings, $settings, $user_info, $board, $topic, $board_info, $maintenance, $sourcedir;]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[// Action and board are both empty... BoardIndex!
+		if (empty($board) && empty($topic))
+		{
+			require_once($sourcedir . '/BoardIndex.php');
+			return 'BoardIndex';
+		}]]></search>
+			<add><![CDATA[// Dream Pages.
+		if (!empty($_REQUEST['page']))
+			return 'dreamPages';
+
+		// Action and board are both empty... BoardIndex!
+		if (empty($board) && empty($topic))
+		{
+			// Display Portal Homepage if Homepage is enabled!
+			if (!empty($modSettings['dp_portal_mode']) && function_exists('load_dream_menu') && allowedTo('dream_portal_view') && empty($modSettings['dp_disable_homepage']))
+				return 'dp_main';
+			// Otherwise, Board Index!
+			else
+			{
+				require_once($sourcedir . '/BoardIndex.php');
+				return 'BoardIndex';
+			}
+		}]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[if (empty($_REQUEST['action']) || !in_array($_REQUEST['action'], array(]]></search>
+			<add><![CDATA['dream', 'dreamFiles', ]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[(!isset($_REQUEST['action']) || !in_array($_REQUEST['action'], array(]]></search>
+			<add><![CDATA['dream', ]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[// Fall through to the board index then...]]></search>
+			<add><![CDATA[// Fall through to the [home] or forum layout!
+		dp_init(empty($modSettings['dp_disable_homepage']) ? 'forum' : '[home]');
+
+		]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[// Otherwise, it was set - so let's go to that action.]]></search>
+			<add><![CDATA[if ((isset($_REQUEST['action']) && $_REQUEST['action'] == 'admin' && isset($_GET['area']) && $_GET['area'] == 'dplayouts' && isset($_GET['sa'])) && ($_GET['sa'] == 'dpaddlayout' || $_GET['sa'] == 'dpaddlayout2' || $_GET['sa'] == 'dpeditlayout' || $_GET['sa'] == 'dpeditlayout2'))
+		$context['smf_actions'] = array_keys($actionArray);
+
+	]]></add>
+		</operation>
+	</file>
+	<file name="$sourcedir/Load.php">
+		<operation>
+			<search position="before"><![CDATA[Wireless+index+Modifications]]></search>
+			<add><![CDATA[+DreamPortal]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[array('Modifications]]></search>
+			<add><![CDATA[+DreamPortal]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[$context['template_layers'] = array('html', 'body');]]></search>
+			<add><![CDATA[
+
+		if (!empty($modSettings['dp_portal_mode']) && allowedTo('dream_portal_view'))
+		{
+			if (!loadLanguage('DreamPortal'))
+				loadLanguage('DreamPortal');
+
+			loadTemplate('DreamPortal', 'dreamportal');
+		}]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[if (strpos($context['html_headers'], 'id="' . $sheet]]></search>
+			<add><![CDATA[if (strpos($context['html_headers'], 'id="' . str_replace('/', '_', $sheet)]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<link rel="stylesheet" type="text/css" id="' . $sheet]]></search>
+			<add><![CDATA[<link rel="stylesheet" type="text/css" id="' . str_replace('/', '_', $sheet)]]></add>
+		</operation>
+	</file>
+	<file name="$sourcedir/Recent.php">
+		<operation>
+			<search position="replace"><![CDATA[
+				'url' => $scripturl . '#c' . (int) $_REQUEST['c'],]]></search>
+			<add><![CDATA[
+				'url' => $scripturl . '?action=forum#c' . (int) $_REQUEST['c'],]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+				'href' => $scripturl . '#c' . $row['id_cat'],
+				'link' => '<a href="' . $scripturl . '#c' . $row['id_cat'] . '">' . $row['cname'] . '</a>']]></search>
+			<add><![CDATA[
+				'href' => $scripturl . '?action=forum#c' . $row['id_cat'],
+				'link' => '<a href="' . $scripturl . '?action=forum#c' . $row['id_cat'] . '">' . $row['cname'] . '</a>']]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+			'url' => $scripturl . '#c' . (int) $_REQUEST['c'][0],]]></search>
+			<add><![CDATA[
+			'url' => $scripturl . '?action=forum#c' . (int) $_REQUEST['c'][0],]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Subs.php">
+		<operation>
+			<search position="before"><![CDATA[$topic || $board]]></search>
+			<add><![CDATA[ || !empty($_GET['page'])]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[// Don't update for every page - this isn't wholly accurate but who cares.]]></search>
+			<add><![CDATA[
+		if (!empty($_GET['page']))
+			if (!empty($_SESSION['last_page_id']) && $_SESSION['last_page_id'] == $_GET['page'])
+				$force = false;
+]]></add>
+		</operation>
+		<!--// If Dream Page or Custom Module is set to PHP, and there are errors in it, the REQUEST_URL will Not be set, and will cause error in SMF Error Log, this prevents that from happening. //-->
+		<operation>
+			<search position="after"><![CDATA[strpos($_SERVER['REQUEST_URL'], 'action=dlattach')]]></search>
+			<add><![CDATA[isset($_SERVER['REQUEST_URL']) && ]]></add>
+		</operation>
+		<!--// Next edit takes care of a KEY duplication issue ("profile") for the SMF Menu so that Dream Menu can handle these properly. //-->
+		<operation error="ignore">
+			<search position="replace"><![CDATA['profile' => array(
+				'title' => $txt['forumprofile'],]]></search>
+			<add><![CDATA['forumprofile' => array(
+				'title' => $txt['forumprofile'],]]></add>
+		</operation>
+		<operation error="ignore">
+			<search position="replace"><![CDATA['profile' => array(
+						'title' => $txt['forumprofile'],]]></search>
+			<add><![CDATA['forumprofile' => array(
+						'title' => $txt['forumprofile'],]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[
+	// Default to home.
+	$current_action = 'home';]]></search>
+			<add><![CDATA[
+	// Default to forum index.
+	$current_action = (!empty($modSettings['dp_portal_mode']) && allowedTo('dream_portal_view') && empty($modSettings['dp_disable_homepage'])) ? 'forum' : 'home';]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[call_integration_hook('integrate_menu_buttons', array(&$buttons));]]></search>
+			<add><![CDATA[
+
+		if (!empty($modSettings['dp_portal_mode']) && !empty($modSettings['dp_menu_mode']))
+		{
+			// Lets grab only Non-DreamMenu keys and titles!
+			if (isset($context['dp_not_dream_menu']))
+			{
+				$index = array();
+				$childKey = 'sub_buttons';
+				$iterator = $buttons;
+				while(list($key, $item) = each($iterator))
+				{
+					array_shift($iterator);
+					$index[$key] = $item['title'];
+					$children = isset($item[$childKey]) ? $item[$childKey] : false;
+					if ($children) $iterator = $children + $iterator;
+				}
+
+				unset($context['dp_not_dream_menu']);
+				return $index;
+			}
+
+			// Adding in our Dream Menu!
+			$buttons = load_dream_menu($buttons);
+		}]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[if (isset($context['menu_buttons'][$context['current_action']]))
+		$current_action = $context['current_action'];]]></search>
+			<add><![CDATA[if (isset($context['menu_buttons'][$context['current_action']]))
+		$current_action = $context['current_action'];
+	elseif (empty($context['current_action']))
+	{
+		if (!empty($_REQUEST['page']) && !empty($context['dp_menu'][strtolower($_REQUEST['page'])]) && !empty($context['dp_menu_parents'][$context['dp_menu'][strtolower($_REQUEST['page'])]]))
+			$current_action = $context['dp_menu_parents'][$context['dp_menu'][strtolower($_REQUEST['page'])]];
+		elseif (empty($_GET['board']) && empty($_GET['topic']))
+			$current_action = 'home';
+	}]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[$context['menu_buttons'] = $menu_buttons;]]></search>
+			<add><![CDATA[$context['menu_buttons'] = $menu_buttons;
+
+	if (!isset($context['user']['unread_messages']))
+		return;]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Subs-BoardIndex.php">
+		<operation>
+			<search position="replace"><![CDATA[
+					'href' => $scripturl . '#c' . $row_board['id_cat'],]]></search>
+			<add><![CDATA[
+					'href' => $scripturl . '?action=forum#c' . $row_board['id_cat'],]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Who.php">
+		<operation>
+			<search position="after"><![CDATA[// Sort out... the column sorting.]]></search>
+			<add><![CDATA[if (!empty($modSettings['dp_portal_mode']) && allowedTo('dream_portal_view'))
+	{
+		loadLanguage('DreamPortal');
+		$txt['who_index'] = $txt['dp_who_portal'];
+		$txt['whoall_forum'] = $txt['dp_who_forum'];
+	}
+
+	]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Help.php">
+		<operation>
+			<search position="after"><![CDATA[// Permission specific help?]]></search>
+			<add><![CDATA[loadLanguage('DreamModules', '', false);
+	loadLanguage('DreamHelp+DreamPermissions');
+
+	]]></add>
+		</operation>
+	</file>
+
+	<file name="$boarddir/SSI.php">
+		<operation>
+			<search position="before"><![CDATA[require_once($sourcedir . '/Security.php');]]></search>
+			<add><![CDATA[
+require_once($sourcedir . '/DreamPortal.php');
+require_once($sourcedir . '/Subs-DreamPortal.php');]]></add>
+		</operation>
+	</file>
+
+	<file name="$themedir/scripts/script.js">
+		<operation>
+			<search position="replace"><![CDATA['#c']]></search>
+			<add><![CDATA['?action=forum#c']]></add>
+		</operation>
+	</file>
+
+</modification>

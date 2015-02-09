@@ -1,0 +1,5 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ http://%{HTTP_HOST}/ [R=301,L]

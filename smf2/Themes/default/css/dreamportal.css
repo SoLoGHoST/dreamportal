@@ -1,0 +1,556 @@
+/*
+	Dream Portal 1.1 (c) 2009-2012 Dream Portal Team
+	This file contains all the rules for Dream Portal and some helper rules for modules to use.
+*/
+
+/***************************************
+	DreamPortal Template file		   *
+***************************************/
+
+.dp_main
+{
+	width: 100%;
+	border-spacing: 5px;
+}
+
+/*
+	Contain the Module so that it doesn't exceed the boundaries!
+*/
+div.dp_module
+{
+	overflow: auto;
+}
+
+/***************************************
+	Module-helper styles			   *
+***************************************/
+
+.dp_padding
+{
+	padding: 5px;
+}
+
+.dp_paddingtop
+{
+	padding: 5px 0px 0px 0px;
+}
+
+.dp_paddingright
+{
+	padding: 0px 5px 0px 0px;
+}
+
+.dp_paddingbottom
+{
+	padding: 0px 0px 5px 0px;
+}
+
+.dp_paddingleft
+{
+	padding: 0px 0px 0px 5px;
+}
+
+.dp_list
+{
+	margin: 0;
+	padding: 0px;
+	line-height: 1.5em;
+	list-style-type: none;
+}
+
+li.dp_list_above
+{
+	padding-top: 5px;
+}
+
+li.dp_list_below
+{
+	padding-bottom: 5px;
+	border-bottom: 1px dashed #AAA;
+}
+
+li.dp_list_cut
+{
+	border-bottom: 1px solid #DDD;
+}
+
+.dp_heavyleftpadding
+{
+	padding-left: 15px;
+}
+
+.dp_control_flow
+{
+	max-height: 250px;
+	overflow: auto;
+}
+
+.dp_list_indent
+{
+	padding-left: 10px;
+}
+
+.dpspacer
+{
+	margin-top: 7px;
+}
+
+.dp_dash_top
+{
+	margin: 10px 0px -5px 0px;
+	border-top: 1px dashed #000000;
+}
+
+.dp_dashed
+{
+	border-bottom: 1px dotted #000000;
+	margin: 0.5em 0;
+}
+
+.dp_bbc_code
+{
+	white-space: normal !important;
+}
+
+/***************************************
+	Module Templates				   *
+***************************************/
+
+.hand
+{
+	cursor: pointer;
+}
+
+.blockframe
+{
+	padding: 1em;
+}
+
+img.dp_curveblock
+{
+	padding: 8px 2px 1px 0;
+	margin: 0 !important;
+	float: right !important;
+}
+
+.dp_temp
+{
+	padding: 0px 10px 0px 10px;
+}
+
+img.dp_tempblock
+{
+	padding: 10px 2px 0px 0px;
+	margin: 0 !important;
+	float: right !important;
+}
+
+.dp_cattemp
+{
+	font-family: arial, helvetica, sans-serif;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+tr.dp_cattemp
+{
+	padding: 0 6px;
+}
+
+h3.dp_cattemp, h4.dp_cattemp
+{
+	overflow: hidden;
+	margin: -7px 0px -7px 0px;
+	height: 31px;
+	line-height: 31px;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 0px 9px 0px 5px;
+}
+
+h3.dp_cattemp img.icon
+{
+	margin: -2px 5px 0px 0px;
+	vertical-align: middle;
+}
+
+/***************************************
+	Dream Portal Admin Styles		   *
+***************************************/
+
+optgroup option, .dp_edit_column
+{
+	padding-left: 10px;
+}
+
+#dp_icon
+{
+	vertical-align: top;
+}
+
+#dp_icon_holder
+{
+	margin: 10px 0 0 0;
+}
+
+/***************************************
+	ManageDPMenu					   *
+***************************************/
+
+#dp_menu
+{
+	width: 100%;
+}
+#dp_menu a
+{
+	margin: 0;
+	line-height: 1.7em;
+}
+#dp_menu li
+{
+	position: relative;
+}
+#dp_menu li ul
+{
+	position: absolute;
+	top: 0;
+	left: 75%;
+	width: 200px;
+	background: #FFFFFF;
+	border: 1px solid #AAA;
+}
+#dp_menu ul
+{
+	display: none;
+}
+#dp_menu li:hover ul
+{
+	display: block;
+}
+
+/***************************************
+	ManageDPLayouts					   *
+***************************************/
+
+/* Hover Module Color Changer Begin */
+.dp_colour_menu {
+	float: right;
+	height: 25px;
+	width: 25px;
+	position: relative;
+	font-family: Verdana, Helvetica, sans-serif;
+	z-index: 900;
+}
+.dp_colour_menu .dp_select {
+   margin:0px;
+   padding:0px;
+   list-style:none;
+   white-space:nowrap;
+}
+.dp_colour_menu li {
+   float:left;
+}
+.dp_colour_menu .dp_select a {
+   display:block;
+   height: 1px;
+   float:left;
+   padding:0px 10px 0px 0px;
+   text-decoration:none;
+   line-height:25px;
+   white-space:nowrap;
+}
+.dp_colour_menu .dp_select a b {
+   display:block;
+   padding:0px 0px 0px 0px;
+}
+.dp_colour_menu .dp_select a:hover, .dp_colour_menu .dp_select li:hover a {
+   padding:0px 0px 0px 0px;
+   cursor:pointer;
+}
+.dp_colour_menu .dp_select a:hover b, .dp_colour_menu .dp_select li:hover a b {
+   display:block;
+   padding:0px 10px 0px 10px;
+   cursor:pointer;
+}
+.dp_colour_menu .dp_sub {
+   display:none;
+}
+.dp_colour_menu ul ul {
+   display:none;
+}
+.dp_colour_menu .dp_sub {
+ margin:0px;
+ padding:0px;
+ list-style:none;
+}
+.dp_colour_menu .dp_sub li {
+   background:transparent;
+}
+.dp_colour_menu .dp_select :hover .dp_sub {
+   height:25px;
+   display:block;
+   position:absolute;
+   float:left;
+   width:230px;
+   top:25px;
+   left:0px;
+   text-align:center;
+}
+.dp_colour_menu .dp_select :hover .dp_sub li a {
+   display:block;
+   height:25px;
+   line-height:25px;
+   float:left;
+   padding:0px;
+   margin:0px;
+   white-space:nowrap;
+   font-size:10px;
+}
+.dp_colour_menu .dp_select :hover .dp_sub li a:hover, .dp_colour_menu .dp_select :hover .dp_sub li:hover {
+   line-height:25px;
+   position:relative;
+}
+
+/* Hover Module Color Changer END */
+
+.smf_content
+{
+	margin: 0;
+	padding: 0.5em 1.2em;
+	text-align: center;
+}
+
+.DragBox
+{
+	width: 106px;
+	font-size: 10px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	font-family: verdana, tahoma, arial;
+}
+/* White */
+.modbox1
+{
+	border: #000 1px ridge;
+	background-color: #fcfcfc;
+}
+.clonebox1
+{
+	border: #000 1px ridge;
+	background-color: #e6e6e6;
+}
+/* Gray */
+.modbox2
+{
+	border: #000 1px ridge;
+	background-color: #c5c5c5;
+}
+.clonebox2
+{
+	border: #000 1px ridge;
+	background-color: #aaaaaa;
+}
+/* Blue */
+.modbox3
+{
+	border: #02528b 1px ridge;
+	background-color: #96c4e5;
+}
+.clonebox3
+{
+	border: #02528b 1px ridge;
+	background-color: #7fa5c2;
+}
+/* Yellow */
+.modbox4
+{
+	border: #88903b 1px ridge;
+	background-color: #e7f658;
+}
+.clonebox4
+{
+	border: #88903b 1px ridge;
+	background-color: #c7d922;
+}
+/* Green */
+.modbox5
+{
+	border: #367127 1px ridge;
+	background-color: #8fdf7a;
+}
+.clonebox5
+{
+	border: #367127 1px ridge;
+	background-color: #4baf2f;
+}
+/* Orange */
+.modbox6
+{
+	border: #8b6c17 1px ridge;
+	background-color: #f8d36f;
+}
+.clonebox6
+{
+	border: #8b6c17 1px ridge;
+	background-color: #E5AF30;
+}
+/* Red */
+.modbox7
+{
+	border: #7b1a1a 1px ridge;
+	background-color: #FF6666;
+}
+.clonebox7
+{
+	border: #7b1a1a 1px ridge;
+	background-color: #E84C4C;
+}
+/* Purple */
+.modbox8
+{
+	border: #533c5f 1px ridge;
+	background-color: #b186c9;
+}
+.clonebox8
+{
+	border: #533c5f 1px ridge;
+	background-color: #9274A5;
+}
+/* Black */
+.modbox9
+{
+	border: #fff 1px ridge;
+	background-color: #303030;
+}
+.clonebox9
+{
+	border: #fff 1px ridge;
+	background-color: #202020;
+}
+.placeholder {border: 1px dotted black; visibility: visible !important; display: inline-block;}
+.placeholder * {visibility: hidden; display: none; height: 0px;}
+.disabled_module {float: left; margin-right: 10px;}
+
+.dp_inner
+{
+	border-top: 1px solid #9999AA;
+	margin: 0 1em 0 0;
+	padding: 1em 1em 0 0;
+}
+
+.module_page
+{
+	width: 50%;
+}
+.module_holder
+{
+	padding-left: 1em;
+	padding-top: 1em;
+}
+.enabled .draggable_module
+{
+	width: 100%;
+	display: inline-block;
+}
+.disabled .draggable_module
+{
+	width: 10em;
+	display: inline-block;
+	margin-left: 5px;
+}
+#messages
+{
+	float: left;
+	width: 50%;
+}
+#action_user_defined2
+{
+	margin-bottom: 5px;
+}
+
+/***************************************
+	ManageDPSettings				   *
+***************************************/
+
+#dp_admin_section
+{
+	overflow: hidden;
+	margin: 1em 0;
+}
+#dp_admin_center .content
+{
+	padding: 1em;
+}
+
+#dp_live_news
+{
+	width: 64%;
+}
+#dp_live_news div.content
+{
+	padding: 0 0 0 1em;
+	font-size: 0.85em;
+}
+#dp_live_news div.content dl
+{
+	padding: 0.5em 0 0 0.5em;
+}
+
+#dpVersionTable
+{
+	width: 34%;
+}
+#dp_version_details
+{
+	overflow: auto;
+	height: 9.5em;
+}
+#dpAnnouncements
+{
+	height: 13.5em;
+	overflow: auto;
+}
+#dpAnnouncements dt
+{
+	border-bottom: 1px dashed #000;
+}
+#dpAnnouncements dd
+{
+	padding: 0;
+	margin: 0 0 1em 1.5em;
+}
+#dp_update_section
+{
+	margin: 0.5em 0 0;
+}
+
+/* Basic restyling of the roundframe class */
+
+.roundframe p
+{
+	padding:0.5em;
+}
+
+.roundframe dl, .roundframe dt, .roundframe p
+{
+	margin:0;
+}
+
+/***************************************
+	ManageDPMenu & ManageDPPages	   *
+***************************************/
+
+#post_header dt
+{
+	clear: both;
+}
+
+/**********************
+	ManageDPExtend	  *
+***********************/
+
+span.dp_lang_update
+{
+	color: rgb(255, 0, 0);
+	font-weight: 700;
+}
